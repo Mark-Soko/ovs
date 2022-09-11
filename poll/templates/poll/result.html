@@ -1,0 +1,45 @@
+{% extends "poll/base.html" %}
+
+{% block title %}Result Page{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2 class="text-center pb-2 mb-2">2022/2023 KUELC ELECTION RESULTS</h2>
+  <div class="table-responsive">
+      <table id="results" class="table table-dark table-hover">
+          <thead style="color: white; background-color: hotpink;">
+              <tr>
+                  <th>Candidate name</th>
+                  <th>Position</th>
+                  <th>Total votes</th>
+                  
+              </tr>
+          </thead>
+          <tbody>
+          {% for i in obj %}
+            <tr>
+              <td>{{ i.name }}</td>
+              <td>{{ i.position }}</td>
+              <td style="background-color: teal;color: white;">{{ i.total_vote }}</td>
+            </tr>
+          {% endfor %}
+             
+          </tbody>
+      </table>
+      <div>
+      <button id="pdf" style="margin-left: 50%; background-color: gainsboro; color: green;">Print Result</button>
+      <button id="footerback" ><a href="{% url 'position' %}"> I want to vote</a></button>
+      </div>
+  </div>
+</div>
+
+     
+
+  </table> 
+  </div>
+ 
+ 
+{% endblock %}
+
+
+

@@ -1,0 +1,62 @@
+{% extends "poll/base.html" %}
+
+{% block title %}Registration{% endblock %}
+
+{% block content %}
+  {% load widget_tweaks %}
+  
+
+  <div class="grid">
+    <h2>Update profile</h2>
+    {% if note %}
+      <h3 class="text text-muted">{{note}}</h3>
+    {% endif %}
+    <form action="" method="POST" class="form login">
+      {% csrf_token %}
+
+        <div class="form__field">
+            <span class="hidden">Username</span></label>
+            {{form.username}}
+        </div>
+
+        <div class="form__field">
+            <span class="hidden">First name</span></label>
+            {{form.first_name}}
+        </div>
+     
+        <div class="form__field">
+            <span class="hidden">Last name</span></label>
+            {{form.last_name}}
+        </div>
+        
+        <div class="form__field">
+          <span class="hidden">Email</span></label>
+          {{form.email}}
+        </div>
+
+
+        <div class="form__field">
+            <span class="hidden">Password</span></label>
+            {{form.password}}
+        </div>
+
+
+        <div class="form__field">
+            <span class="hidden">Confirm Password</span></label>
+            {{form.confirm_password}}
+        </div>
+
+        <div class="form__field">
+            <input type="submit" value="Update">
+        </div>
+
+    </form>
+
+    <p class="text--center">I dont't want to update... <a href="{% url 'dashboard' %}">To dashboard</a> <svg class="icon">
+            <use xlink:href="#icon-arrow-right"></use>
+        </svg></p>
+
+</div>
+
+
+{% endblock %}

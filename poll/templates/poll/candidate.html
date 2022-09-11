@@ -1,0 +1,43 @@
+{% extends "poll/base.html" %}
+
+{% block title %}Candidate{% endblock %}
+
+{% block content %}
+
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-danger" role="alert">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="container2">
+          <div class="options">
+              <h2>{{ obj.title }}</h2>
+              {% for c in obj.candidate_set.all %}
+              <input type="radio" name="{{ c.position}}" id="id_{{c.id}}" value="{{c.id}}" >
+              <label for="id_{{c.id}}">
+                  <img src="{{ c.image.url }}" width="60px">
+                  <p >{{c.name}}</p>  <a href="{% url 'detail' c.id %}"></a>
+                  <!-- <p >{{c.name}}</p>  <a href="{% url 'detail' c.id %}"></a> -->
+              </label>
+              {% endfor %}
+          </div>
+         
+          
+    
+          <div class="btn2"> 
+            <input type="submit" class="btn btn-outline-success btn-sm" value="VOTE">     
+          </div>
+
+        </form>
+    </div>
+    <a id="Back" href="{% url 'position' %}">Back to Poll</a></div>
+    
+{% endblock %}
+
+

@@ -1,0 +1,44 @@
+{% extends "poll/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-danger" role="alert">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      <div class="grid">
+        <h2>User Login</h2>
+        
+        <form action="" method="POST" class="form login">
+          {% csrf_token %}
+      
+            <div class="form__field">
+                <span class="hidden">Username</span></label>
+                {{form.username}}
+            </div>
+      
+            <div class="form__field">
+                <span class="hidden">Password</span></label>
+                {{form.password}}
+            </div>
+      
+            <div class="form__field">
+                <input type="submit" value="Login">
+            </div>
+      
+        </form>
+      
+        <p class="text--center">New to the platform? <a href="https://wa.me/+254718282544">Send ticket</a> <svg class="icon">
+                <use xlink:href="#icon-arrow-right"></use>
+            </svg></p>
+      
+      </div>
+      
+{% endblock %}
+

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'poll/position.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+
+</head>
+<body>
+  <div>
+     <div class="container3">
+      <h2>Vacant positions</h2>
+      <ul>
+        {% for i in obj %}
+          <li><p>Vote in your <a style="text-decoration: none;" href="{% url 'candidate' i.id %}"><span style="color: #FF8300;">{{i.title}}</span></a></p></li>
+        {% empty %}
+          <p>No Positions Available</p>
+        {% endfor %}
+        </ul><br>
+         <a id="Back" style="" href="{% url 'result' %}">View Result</a></div>
+ 
+  </div>
+
+</body>
+</html>
+
